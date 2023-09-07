@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Break"
         tools:targetApi="31">
         <activity
-            android:name=".HandlerExampleActivity"
+            android:name=".timer.EmptyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".timer.TimerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HandlerExampleActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
