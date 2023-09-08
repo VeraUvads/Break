@@ -5,7 +5,8 @@ import com.uva.fastapp.model.CatDto
 
 class CatRepository(private val remoteDatasource: RemoteDataSource) {
 
-    fun uploadCats(): List<CatDto> {
-        return remoteDatasource.uploadCats()
+    suspend fun uploadCats(limit: Int): List<CatDto> {
+        return remoteDatasource.uploadCats(limit)
     }
+
 }

@@ -3,14 +3,14 @@ package com.uva.fastapp.main
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.uva.fastapp.AppContainer
+import com.uva.fastapp.domain.CatRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel : ViewModel() {
+class CatsListViewModel(private val repository: CatRepository) : ViewModel() {
 
     val photos: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
 
@@ -20,12 +20,12 @@ class MainViewModel : ViewModel() {
 
     fun refresh() {
         viewModelScope.launch(
-            CoroutineExceptionHandler { coroutineContext, throwable ->
+            CoroutineExceptionHandler { _, throwable ->
                 Log.e("quick", throwable.message!!)
             }
         ) {
             withContext(Dispatchers.IO) {
-                val answer = AppContainer.repository.uploadCats().map { it.url }
+                val answer = repository.uploadCats(10).map { it.url }
                 photos.emit(answer)
             }
         }

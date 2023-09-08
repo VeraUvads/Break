@@ -14,15 +14,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.uva.fastapp.AppContainer
+import com.uva.fastapp.ext.viewModelFactory
 
 @Composable
-fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
-    val photos by mainViewModel.photos.collectAsState()
+fun CatsListScreen(
+    catsListViewModel: CatsListViewModel = viewModel(
+        factory = viewModelFactory { CatsListViewModel(repository = AppContainer.catRepository) }
+    )
+) {
+    val photos by catsListViewModel.photos.collectAsState()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = { mainViewModel.refresh() }
+            onClick = { catsListViewModel.refresh() }
         ) {
             Text("refresh")
         }

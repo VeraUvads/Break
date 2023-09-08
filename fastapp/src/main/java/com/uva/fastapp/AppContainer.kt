@@ -5,8 +5,11 @@ import com.uva.fastapp.domain.CatRepository
 
 object AppContainer {
 
-    private val dataSource = RemoteDataSource()
 
-    val repository = CatRepository(dataSource)
-
+    private val dataSource by lazy {
+        RemoteDataSource()
+    }
+    val catRepository by lazy {
+        CatRepository(dataSource)
+    }
 }
