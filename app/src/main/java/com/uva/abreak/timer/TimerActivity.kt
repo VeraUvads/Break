@@ -9,13 +9,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.uva.abreak.R
+import com.uva.abreak.codegen_test.Foo
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class TimerActivity : AppCompatActivity() {
     lateinit var timerJob: Job
     val viewModel: TimerViewModel by viewModels()
-
+    val hjkh = Foo()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)

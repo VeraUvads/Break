@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Break"
 include ':app'
 include ':fastapp'
+include ':parcel_codegen'
+include ':compiler'
