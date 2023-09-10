@@ -1,7 +1,6 @@
 package com.uva.fastapp.alarm_picker
 
 import android.app.TimePickerDialog
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,7 +30,7 @@ fun AlarmScreen(
         factory = viewModelFactory {
             AlarmViewModel(
                 repository = AppContainer.catRepository,
-                context = App.instance.applicationContext
+                appContext = App.instance.applicationContext
             )
         }
     )
