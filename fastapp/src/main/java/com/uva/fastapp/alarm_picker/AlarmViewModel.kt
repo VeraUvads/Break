@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.work.BackoffPolicy
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import androidx.work.workDataOf
@@ -26,6 +27,7 @@ class AlarmViewModel(private val repository: CatRepository, private val appConte
                     .setInputData(
                         workDataOf(ALARM_TIME_KEY to time),
                     )
+                    .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
                     .setBackoffCriteria(
                         backoffPolicy = BackoffPolicy.LINEAR,
                         backoffDelay = 100L,
