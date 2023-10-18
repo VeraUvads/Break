@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Break"
 include ':app'
 include ':fastapp'
+include ':contacts'
